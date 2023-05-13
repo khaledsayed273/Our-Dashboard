@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import SideBar from './SideBar';
+import NavBar from './NavBar';
+import MainPage from './MainPage';
+
 
 function App() {
+
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const [drawerWidth, setDrawerWidth] = useState(240)
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <NavBar drawerWidth={drawerWidth} setDrawerWidth={setDrawerWidth} handleDrawerToggle={handleDrawerToggle} />
+
+      <SideBar drawerWidth={drawerWidth} mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
+
+      <MainPage drawerWidth={drawerWidth}/>
+    </Box>
+
   );
+
+
 }
 
 export default App;

@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+:root {
+  --bg-dark-mode: #24292d;
+  --color-dark-mode: white;
+  --bg-header-dark-mode: #282e32;
+  --transitiondrawer: 400ms;
+  --textDark: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/*GridLineChart*/
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (min-width: 992px) {
+  .gridLineChart {
+    height: 400px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
+@media (max-width: 992px) {
+  .gridLineChart {
+    height: 700px;
+  }
+  .gridPieChart {
+    height: 900px;
+  }
+}
+
+/* This Is For NavBar Color */
+
+nav div .MuiPaper-elevation {
+  background-color: var(--bg-dark-mode);
+  color: var(--color-dark-mode);
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: var(--transitiondrawer);
+}
+
+.MuiDrawer-paper {
+  background-color: var(--bg-dark-mode) !important;
+  color: var(--color-dark-mode) !important;
+  transition: var(--transitiondrawer);
+}
+
+.svgDiv {
+  transition: 400ms;
+}
+
+.svgRotate {
+  transform: rotate(-180deg);
+}
+
+/* For NavBar Icon Color */
+
+nav div svg,
+.MuiDrawer-paper svg {
+  color: var(--color-dark-mode);
+  font-size: 21px;
+}
+
+/* Header */
+
+header {
+  background-color: var(--bg-header-dark-mode) !important;
+  transition: var(--transitiondrawer) !important;
+}
+
+/*For Menu*/
+
+.css-10nakn3-MuiModal-root-MuiPopover-root-MuiMenu-root,
+.css-6f6ff7-MuiModal-root-MuiPopover-root-MuiMenu-root {
+  z-index: 1 !important;
+}
+
+/*Main Component*/
+
+.MuiBox-root {
+  background-color: #1a1d21;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  transition: var(--transitiondrawer);
 }
 
-.App-link {
-  color: #61dafb;
+/* Box */
+
+.box {
+  background-color: #282e32;
+  padding: 10px;
+  border-radius: 7px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*Text*/
+
+.textTitlePage {
+  color: var(--textDark);
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 40px !important;
+  letter-spacing: 1px;
 }
