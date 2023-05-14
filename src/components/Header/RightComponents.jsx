@@ -3,7 +3,7 @@ import React from 'react'
 import IconNotificationComponent from './ForRightComponents/IconsComponents/IconNotificationComponent'
 import IconProfileComponent from './ForRightComponents/IconsComponents/IconProfileComponent'
 import MoreIconInMobileComponent from './ForRightComponents/IconsComponents/MoreIconMobileComponent'
-import { handleProfileMenuOpenFromSlice, handleMobileMenuClose, handleMenuClose } from '../../redux/slices/HeaderSlice'
+import { handleProfileMenuOpenFromSlice, handleMobileMenuClose, handleMenuClose, HandleNotfication } from '../../redux/slices/HeaderSlice'
 import { useDispatch } from 'react-redux'
 
 function RightComponents({ menuId, mobileMenuId }) {
@@ -22,14 +22,18 @@ function RightComponents({ menuId, mobileMenuId }) {
         dispatch(handleMenuClose())
     }
 
+    const HandleNotficationFun = () => {
+        dispatch(HandleNotfication())
+    }
+
 
     return (
         <>
 
             <Typography variant='div' component="div" sx={{ display: { xs: 'none', md: 'flex' } }}>
-                
+
                 <IconNotificationComponent
-                //  HandleNotfication={HandleNotfication}
+                    HandleNotfication={HandleNotficationFun}
                 />
                 <IconProfileComponent
                     menuId={menuId}

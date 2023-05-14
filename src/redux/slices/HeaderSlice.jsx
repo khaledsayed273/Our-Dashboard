@@ -4,6 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     anchorEl: false,
     mobileMoreAnchorEl: false,
+    menuId :'primary-search-account-menu',
+    mobileMenuId :'primary-search-account-menu-mobile',
     user: {
         id: 1,
         firstName: "khaled",
@@ -12,10 +14,11 @@ const initialState = {
         password: "123456",
         img: "https://mui.com/static/images/avatar/2.jpg",
     },
-
     Notification: false,
-    Message: false
+    
 }
+
+
 
 const HeaderSlice = createSlice({
     name: "HeaderSlice",
@@ -36,21 +39,16 @@ const HeaderSlice = createSlice({
             state.mobileMoreAnchorEl = action.payload
         },
         HandleNotfication: (state) => {
-            return (
-                state.Notification = !state.Notification,
-                state.Message = false
-            )
+            state.Notification = !state.Notification;
         },
-        HandleMessage: (state) => {
-            return (
-                state.Notification = false,
-                state.Message = !state.Message
-            )
-        },
+
         handleMenuClose: (state) => {
             state.anchorEl = null
         },
-    }
+
+    },
+    
+
 })
 
 

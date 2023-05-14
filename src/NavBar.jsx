@@ -1,5 +1,5 @@
 import { Toolbar, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import AppBar from '@mui/material/AppBar';
 
 import IconButton from '@mui/material/IconButton';
@@ -8,16 +8,16 @@ import SearchComponent from './components/Header/SearchComponent';
 import RenderMenuMobileComponent from './components/Header/ForRightComponents/RenderMenuMobileComponent';
 import RenderMenuComponent from './components/Header/ForRightComponents/RenderMenuComponent';
 import RightComponents from './components/Header/RightComponents';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { HandleClose, handleMobileMenuOpenFromSlice } from './redux/slices/HeaderSlice';
+import NotificationsComponent from './components/Header/ForRightComponents/NotificationsComponent';
+import { FetchingData } from './redux/slices/APISlice';
 
 function NavBar({ drawerWidth, setDrawerWidth, handleDrawerToggle }) {
 
-    const menuId = 'primary-search-account-menu';
-
-    const mobileMenuId = 'primary-search-account-menu-mobile';
-
     const dispatch = useDispatch()
+
+    const store = useSelector((state) => state.HeaderSlice)
 
     const handleDrawer = () => {
         if (window.innerWidth >= 600 && drawerWidth === 240) {
@@ -35,6 +35,10 @@ function NavBar({ drawerWidth, setDrawerWidth, handleDrawerToggle }) {
     const handleProfileMenuClose = () => {
         dispatch(HandleClose())
     }
+
+    useEffect(() => {
+        dispatch(FetchingData())
+    }, [dispatch])
     
 
     return (
@@ -86,7 +90,7 @@ function NavBar({ drawerWidth, setDrawerWidth, handleDrawerToggle }) {
                         </Typography>
 
                         <Typography variant="div" component="div">
-                            <RightComponents mobileMenuId={mobileMenuId} menuId={menuId} />
+                            <RightComponents mobileMenuId={store.mobileMenuId} menuId={store.menuId} />
                         </Typography>
 
                     </Typography>
@@ -97,13 +101,13 @@ function NavBar({ drawerWidth, setDrawerWidth, handleDrawerToggle }) {
             <RenderMenuMobileComponent
                 handleMobileMenuClose={handleMobileMenuClose}
                 // HandleNotfication={HandleNotfication}
-                mobileMenuId={mobileMenuId}
+                mobileMenuId={store.mobileMenuId}
             />
-            <RenderMenuComponent menuId={menuId}
+            <RenderMenuComponent menuId={store.menuId}
                 handleProfileMenuClose={handleProfileMenuClose}
 
             />
-            {/* {Notification ? <NotificationsComponent /> : null} */}
+            {store.Notification ? <NotificationsComponent /> : null}
         </>
 
     )
