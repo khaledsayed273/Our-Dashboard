@@ -5,7 +5,7 @@ const initialState = {
     anchorEl: false,
     mobileMoreAnchorEl: false,
     menuId :'primary-search-account-menu',
-    mobileMenuId :'primary-search-account-menu-mobile',
+    mobileMenuId : 'primary-search-account-menu-mobile',
     user: {
         id: 1,
         firstName: "khaled",

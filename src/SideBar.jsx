@@ -90,7 +90,7 @@ function SideBar(props) {
         <div>
             <Toolbar sx={{ display: "flex", justifyContent: 'center', padding: "0 !important" }} >
 
-                <Link to="/">
+                <Link aria-label='Logo' to="/">
                     <Typography sx={{
                         width: "25px",
                         height: "25px",
